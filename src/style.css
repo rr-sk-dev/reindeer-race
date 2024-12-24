@@ -1,0 +1,124 @@
+/* src/style.css */
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #87ceeb 0%, #87ceeb 60%, #ffffff 60%, #ffffff 100%);
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+  touch-action: none;
+}
+
+.track {
+  position: relative;
+  height: 200px;
+  margin: 100px 20px 0;
+  border-bottom: 5px dashed #333;
+  max-width: calc(100vw - 40px);
+}
+
+.reindeer {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M20,50 Q30,20 50,20 T80,50 L90,90 H10 L20,50" fill="brown"/><circle cx="40" cy="40" r="5" fill="black"/><path d="M60,30 Q70,20 80,30" fill="none" stroke="brown" stroke-width="3"/></svg>')
+    no-repeat;
+  transition: left 0.1s linear;
+  left: 0;
+}
+
+#reindeer1 {
+  top: 0;
+}
+#reindeer2 {
+  top: 120px;
+}
+
+.run {
+  transform: translateY(-10px);
+}
+
+.winner {
+  animation: celebrate 1s infinite;
+}
+
+@keyframes celebrate {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px) rotate(10deg);
+  }
+}
+
+.winner-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 48px;
+  color: #ff0000;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  animation: pop 0.5s ease-out;
+  white-space: nowrap;
+}
+
+@keyframes pop {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+  }
+  70% {
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.controls {
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.control-button {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: #ff4444;
+  border: none;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.control-button:active {
+  transform: scale(0.95);
+  background: #cc3333;
+}
+
+@media (min-width: 768px) {
+  .control-button {
+    display: none;
+  }
+
+  .keyboard-controls {
+    display: block;
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+  }
+}
+
+@media (max-width: 767px) {
+  .keyboard-controls {
+    display: none;
+  }
+}
